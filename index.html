@@ -57,12 +57,10 @@
         }
         .search-iframes {
             display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            overflow: hidden; /* Prevent iframes from overflowing */
+            flex-direction: column;
         }
         .search-iframe {
-            width: 100%; /* Make the iframes full width */
+            width: 100%; /* Make the iframe full width */
             border: none;
             background-color: #fff;
             height: calc(100vh - 150px); /* Adjust height as needed */
@@ -94,7 +92,7 @@
             <iframe class="search-iframe" src="https://www.bing.com" title="iMu Bing Search Engine"></iframe>
 
             <!-- Searx iframe -->
-            <iframe class="search-iframe" src="https://searx.gpm.org" title="iMu Searx Search Engine"></iframe>
+            <iframe class="search-iframe" src="https://searx.thegpm.org" title="iMu Searx Search Engine"></iframe>
 
             <!-- OpenAI iframe -->
             <iframe class="search-iframe" src="https://open.ai/?feed" title="iMu OpenAI"></iframe>
