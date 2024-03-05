@@ -62,14 +62,10 @@
             overflow: hidden; /* Prevent iframes from overflowing */
         }
         .search-iframe {
-            flex: 1;
-            margin: 0 10px;
+            width: 100%; /* Make the iframes full width */
             border: none;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             background-color: #fff;
-            overflow: hidden; /* Hide iframe content overflow */
-            height: 600px; /* Adjust iframe height */
+            height: calc(100vh - 150px); /* Adjust height as needed */
         }
     </style>
 </head>
@@ -101,12 +97,12 @@
             <iframe class="search-iframe" src="https://searx.gpm.org" title="iMu Searx Search Engine"></iframe>
 
             <!-- OpenAI iframe -->
-            <iframe class="search-iframe" src="https://openai.com/?feed" title="iMu OpenAI"></iframe>
+            <iframe class="search-iframe" src="https://open.ai/?feed" title="iMu OpenAI"></iframe>
         </div>
     </main>
     <footer>
         <p>&copy; <span id="year"></span> 😘. This work is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>. Created by <a href="https://openai.com">GPT-3.5</a>.</p>
-        <p>No logs are kept of your usage. iMu and its contributors are not liable for any misuse. If you have any concerns, please message us directly on GitHub at <a href="https://github.com/imu-admin">imu-admin</a>. Thanks, and enjoy your stay!</p>
+        <p>No logs are kept of your usage. iMu and its contributors are not liable for any misuse. If you have any concerns, please message us directly on GitHub at <a href="https://github.com/imu-admin">imu-admin</a>. Thanks, and enjoy your stay! You</p>
 
         <script>
             var yearSpan = document.getElementById('year');
