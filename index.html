@@ -12,6 +12,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#333">
     <!-- Add other SEO meta tags as needed -->
+    <script src="https://detect-it.rafgraph.dev/detect-it.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -49,21 +50,36 @@
         footer {
             background-color: #333;
             color: #fff;
-            padding: 10px 0;
+            padding: 5px 0;
             text-align: center;
             position: fixed;
             bottom: 0;
             width: 100%;
-        }
-        .search-iframes {
-            display: flex;
-            flex-direction: column;
+            font-size: 14px;
         }
         .search-iframe {
             width: 100%; /* Make the iframe full width */
             border: none;
             background-color: #fff;
             height: calc(100vh - 150px); /* Adjust height as needed */
+        }
+        .iframe-container {
+            margin-top: 20px;
+            overflow: hidden; /* Prevent iframes from overflowing */
+        }
+        .wiki-content {
+            display: none; /* Hide initially */
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        footer.dark-mode {
+            background-color: #111;
         }
     </style>
 </head>
@@ -76,7 +92,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Topics</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a onclick="openTelegram()" href="#">Contact</a></li>
         </ul>
     </nav>
     <main>
@@ -86,21 +102,22 @@
             <p>Here you can find all of the open source projects that have helped contribute to this project ❤️.</p>
         </section>
 
-        <!-- Search engine iframes -->
-        <div class="search-iframes">
-            <!-- Bing iframe -->
-            <iframe class="search-iframe" src="https://www.bing.com" title="iMu Bing Search Engine"></iframe>
+        <!-- Button to generate wiki content -->
+        <button onclick="generateWikiContent()">Generate Wiki Content</button>
 
-            <!-- Searx iframe -->
-            <iframe class="search-iframe" src="https://searx.thegpm.org" title="iMu Searx Search Engine"></iframe>
+        <!-- Dark mode switch -->
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
-            <!-- OpenAI iframe -->
-            <iframe class="search-iframe" src="https://open.ai/?feed" title="iMu OpenAI"></iframe>
+        <!-- Wiki content -->
+        <div class="wiki-content" id="wikiContent">
+            <h2>What is iMu?</h2>
+            <p>iMu is a non-profit open source decentralized consulting and advisory cyber security firm. Our goal is to assist anyone in their process of starting their own venture in order to promote new ideas and secure networks.</p>
+            <!-- Other content omitted for brevity -->
         </div>
     </main>
     <footer>
         <p>&copy; <span id="year"></span> 😘. This work is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>. Created by <a href="https://openai.com">GPT-3.5</a>.</p>
-        <p>No logs are kept of your usage. iMu and its contributors are not liable for any misuse. If you have any concerns, please message us directly on GitHub at <a href="https://github.com/imu-admin">imu-admin</a>. Thanks, and enjoy your stay! You</p>
+        <p>No logs are kept of your usage. iMu and its contributors are not liable for any misuse. If you have any concerns, please message us directly on GitHub at <a href="https://github.com/imu-admin">imu-admin</a>. Thanks, and enjoy your stay! You <span id="user-info"></span></p>
 
         <script>
             var yearSpan = document.getElementById('year');
@@ -114,7 +131,33 @@
                 var hours = currentDateTime.getHours();
                 var formattedTime = hours + ":" + minutes + ":" + seconds;
                 yearSpan.textContent = currentYear + ' ' + formattedTime;
+
+                // Get user's device type and browser
+                var deviceType = detectIt.deviceType;
+                var browser = detectIt.browser.name + " " + detectIt.browser.version;
+                var userInfo = "Device: " + deviceType + " | Browser: " + browser;
+                document.getElementById("user-info").textContent = userInfo;
             }, 1000);
+
+            function generateWikiContent() {
+                var wikiContent = document.getElementById("wikiContent");
+                if (wikiContent.style.display === "none") {
+                    wikiContent.style.display = "block";
+                } else {
+                    wikiContent.style.display = "none";
+                }
+            }
+
+            function openTelegram() {
+                window.open('https://t.me/your_telegram_username', '_blank');
+            }
+
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+                document.querySelectorAll("footer").forEach(function(element) {
+                    element.classList.toggle("dark-mode");
+                });
+            }
         </script>
     </footer>
 </body>
