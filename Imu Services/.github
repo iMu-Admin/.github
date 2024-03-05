@@ -1,3 +1,91 @@
-You finally found it
-Welcome to the iMu wiki page.
-Here you can find all of the open source projects that have helped contribute to this project.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description of the imu page">
+    <meta name="keywords" content="imu, sample, page">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <meta name="generator" content="imu Template Generator">
+    <meta name="copyright" content="Copyright">
+    <meta name="language" content="English">
+    <meta name="refresh" content="300">
+    <meta name="revisit-after" content="7 days">
+    <meta property="og:title" content="imu Page Title">
+    <meta property="og:description" content="Description of the imu page">
+    <meta property="og:image" content="https://example.com/imu-image.jpg">
+    <meta property="twitter:title" content="imu Page Title">
+    <meta property="twitter:description" content="Description of the imu page">
+    <meta property="twitter:image" content="https://example.com/imu-image.jpg">
+    <link rel="canonical" href="https://example.com/imu-page">
+    <title>imu Page Title</title>
+    <style>
+        /* CSS styles for imu page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>imu Page Title</h1>
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="search()">Search</button>
+        <div id="searchResults"></div>
+        <h2>You finally found it</h2>
+        <h3>Welcome to the iMu wiki page.</h3>
+        <p>Here you can find all of the open source projects that have helped contribute to this project.</p>
+    </div>
+
+    <script>
+        // JavaScript code for imu page functionality
+        function search() {
+            var input, filter, container, paragraphs, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            container = document.getElementsByClassName('container')[0];
+            paragraphs = container.getElementsByTagName('p');
+            var searchResults = [];
+
+            for (i = 0; i < paragraphs.length; i++) {
+                txtValue = paragraphs[i].textContent || paragraphs[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    paragraphs[i].style.display = "";
+                    searchResults.push(txtValue);
+                } else {
+                    paragraphs[i].style.display = "none";
+                }
+            }
+
+            displaySearchResults(searchResults);
+        }
+
+        function displaySearchResults(results) {
+            var searchResultsContainer = document.getElementById('searchResults');
+            searchResultsContainer.innerHTML = '';
+            results.forEach(function(result) {
+                var p = document.createElement('p');
+                p.textContent = result;
+                searchResultsContainer.appendChild(p);
+            });
+        }
+    </script>
+</body>
+</html>
