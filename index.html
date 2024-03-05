@@ -47,42 +47,42 @@
     <div class="container">
         <h1>imu Page Title</h1>
         <input type="text" id="searchInput" placeholder="Search...">
-        <button onclick="search()">Search</button>
+        <button onclick="searchLocal()">Search Local</button>
+        <button onclick="searchSearx()">Search Searx</button>
         <div id="searchResults"></div>
         <h2>You finally found it</h2>
         <h3>Welcome to the iMu wiki page.</h3>
-        <p>Here you can find all of the open source projects that have helped contribute to this project.</p>
+        <p>Here you can find all of the open-source projects that have helped contribute to this project.</p>
     </div>
 
     <script>
         // JavaScript code for imu page functionality
-        function search() {
-            var input, filter, container, paragraphs, i, txtValue;
-            input = document.getElementById('searchInput');
-            filter = input.value.toUpperCase();
-            container = document.getElementsByClassName('container')[0];
-            paragraphs = container.getElementsByTagName('p');
-            var searchResults = [];
+        function searchLocal() {
+            // Your local search function here
+        }
 
-            for (i = 0; i < paragraphs.length; i++) {
-                txtValue = paragraphs[i].textContent || paragraphs[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    paragraphs[i].style.display = "";
-                    searchResults.push(txtValue);
-                } else {
-                    paragraphs[i].style.display = "none";
-                }
-            }
-
-            displaySearchResults(searchResults);
+        function searchSearx() {
+            var searchTerm = document.getElementById('searchInput').value;
+            var apiUrl = "https://searx.thegpm.org/search?q=" + encodeURIComponent(searchTerm);
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displaySearchResults(data.results);
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         function displaySearchResults(results) {
             var searchResultsContainer = document.getElementById('searchResults');
             searchResultsContainer.innerHTML = '';
-            results.forEach(function(result) {
+
+            results.forEach(result => {
                 var p = document.createElement('p');
-                p.textContent = result;
+                var a = document.createElement('a');
+                a.href = result.url;
+                a.textContent = result.title;
+                p.appendChild(a);
                 searchResultsContainer.appendChild(p);
             });
         }
