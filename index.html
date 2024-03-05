@@ -45,7 +45,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>imu Page Title</h1>
+        <h1>iMu</h1>
         <input type="text" id="searchInput" placeholder="Search...">
         <button onclick="searchLocal()">Search Local</button>
         <button onclick="searchSearx()">Search Searx</button>
@@ -63,7 +63,7 @@
 
         function searchSearx() {
             var searchTerm = document.getElementById('searchInput').value;
-            var apiUrl = "https://searx.thegpm.org/search?q=" + encodeURIComponent(searchTerm);
+            var apiUrl = "https://searx.github.io/searx/dev/search?q=" + encodeURIComponent(searchTerm);
             
             fetch(apiUrl)
                 .then(response => response.json())
