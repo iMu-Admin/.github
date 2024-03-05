@@ -3,10 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }}{% else %}My Wiki{% endif %}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}A simple wiki template for organizing and sharing information.{% endif %}">
-    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}wiki, knowledge base, information, collaboration{% endif %}">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>My Wiki</title>
+    <meta name="description" content="A simple wiki template for organizing and sharing information.">
+    <meta name="keywords" content="wiki, knowledge base, information, collaboration">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#333">
     <!-- Add other SEO meta tags as needed -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            color: #666;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .search-iframes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            overflow: hidden; /* Prevent iframes from overflowing */
+        }
+        .search-iframe {
+            flex: 1;
+            margin: 0 10px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            overflow: hidden; /* Hide iframe content overflow */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,10 +85,41 @@
         </ul>
     </nav>
     <main>
-        {{ content }}
+        <!-- Your wiki content goes here -->
+        <section>
+            <h2>Welcome to My Wiki!</h2>
+            <p>This is a simple HTML template for a wiki. You can customize it to fit your needs.</p>
+        </section>
+
+        <!-- Search engine iframes -->
+        <div class="search-iframes">
+            <!-- Bing iframe -->
+            <iframe class="search-iframe" src="https://www.bing.com" title="Bing Search Engine"></iframe>
+
+            <!-- Searx iframe -->
+            <iframe class="search-iframe" src="https://searx.gpm.org" title="Searx Search Engine"></iframe>
+
+            <!-- OpenAI iframe -->
+            <iframe class="search-iframe" src="https://open.ai/?feed" title="OpenAI"></iframe>
+        </div>
     </main>
     <footer>
-        <p>&copy; {% now  "%Y" %} My Wiki. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> My Wiki. All rights reserved.</p>
+
+        <script>
+            var yearSpan = document.getElementById('year');
+            var currentYear = new Date().getFullYear();
+            yearSpan.textContent = currentYear;
+            
+            setInterval(function() {
+                var currentDateTime = new Date();
+                var seconds = currentDateTime.getSeconds();
+                var minutes = currentDateTime.getMinutes();
+                var hours = currentDateTime.getHours();
+                var formattedTime = hours + ":" + minutes + ":" + seconds;
+                yearSpan.textContent = currentYear + ' ' + formattedTime;
+            }, 1000);
+        </script>
     </footer>
 </body>
 </html>
