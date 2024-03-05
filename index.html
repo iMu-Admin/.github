@@ -1,77 +1,30 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Description of the imu page">
-    <meta name="keywords" content="imu, sample, page">
-    <meta name="author" content="Your Name">
-    <meta name="robots" content="index, follow">
-    <meta name="generator" content="imu Template Generator">
-    <meta name="copyright" content="Copyright">
-    <meta name="refresh" content="300">
-    <meta name="revisit-after" content="7 days">
-    <meta property="og:title" content="imu">
-    <meta property="og:description" content="Description of the imu page">
-    <meta property="og:image" content="https://example.com/imu-image.jpg">
-    <meta property="twitter:title" content="imu">
-    <meta property="twitter:description" content="Description of the imu page">
-    <meta property="twitter:image" content="https://example.com/imu-image.jpg">
-    <link rel="canonical" href="https://example.com/imu-page">
-    <title>imu</title>
-    <style>
-        /* CSS styles for imu page */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        iframe {
-            width: 100%;
-            height: 500px; /* Adjust height as needed */
-            border: none;
-        }
-    </style>
+    <title>{% if page.title %}{{ page.title }}{% else %}My Wiki{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}A simple wiki template for organizing and sharing information.{% endif %}">
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}wiki, knowledge base, information, collaboration{% endif %}">
+    <!-- Add other SEO meta tags as needed -->
 </head>
 <body>
-    <div class="container">
-        <h1>imu</h1>
-        <input type="text" id="searchInput" placeholder="Search..." style="width: 70%;">
-        <button onclick="searchLocal()">Search Local</button>
-        <button onclick="searchSearx()">Search Searx</button>
-        <div id="searchResults">
-            <!-- Embed Searx search results here -->
-            <iframe id="searxFrame" src="" frameborder="0"></iframe>
-        </div>
-        <h2>You finally found it</h2>
-        <h3>Welcome to the iMu wiki page.</h3>
-        <p>Here you can find all of the open-source projects that have helped contribute to this project.</p>
-    </div>
-
-    <script>
-        // JavaScript code for imu page functionality
-        function searchLocal() {
-            // Your local search function here
-        }
-
-        function searchSearx() {
-            var searchTerm = document.getElementById('searchInput').value;
-            var searxUrl = "https://searx.thegpm.org/?q=" + encodeURIComponent(searchTerm);
-            document.getElementById('searxFrame').src = searxUrl;
-        }
-    </script>
+    <header>
+        <h1>My Wiki</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Topics</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        {{ content }}
+    </main>
+    <footer>
+        <p>&copy; {% now  "%Y" %} My Wiki. All rights reserved.</p>
+    </footer>
 </body>
 </html>
